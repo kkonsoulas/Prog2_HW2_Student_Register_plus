@@ -1,0 +1,83 @@
+We provide you with 15 tests. For each test X we give you the following files:
+a_args_X: program arguments (includes the values of the sizes M, K
+which you should specify at runtime - see pronunciation.)
+a_in_X: input
+a_out_X: corresponding expected output.
+
+where X an integer from 1 to 15.
+
+
+####################### EXECUTION ######################### ##########
+ 
+Assuming the executable is called project2 write first
+
+./project2 M K S < a_in_X
+
+to run your program with arguments the M K S sizes you see in the file
+a_args_X and input the commands shown in the file a_in_X.
+The output of your program will appear on the screen. When you will be sure
+that the program does not have infinite recursion, write
+
+./project2 M K S < a_in_X > my_out_X
+
+to redirect the program's output to the file my_out_X so that
+be able to compare it with the expected one.
+
+######################### CONTRACT OUTPUT CONTROL ###################### #############
+ 
+You can compare your output to our (expected) output by writing:
+
+diff a_out_X my_out_X
+
+If there are no differences you won't see anything.
+
+If you have differences you will see one of the following:
+34c34
+< A-NOK BOYETT_S_AL 10 15
+---
+> A-OK 10 15
+This means that line 34 of the first file given to the command
+diff should be changed (c=change) to look like line 34 of the second one
+file. Also listed are the lines in question. With < starts the first line
+file and with > the line of the second one.
+ 
+21a22,23
+> A-OK 10 15
+>
+This means that after line 21 of the first file they must be added
+(a=add) the contents of lines 22-23 of the second file (which
+listed immediately after) to match files.
+
+32d31
+< 10 BOYETT_S_AL 3 10 15
+This means that line 32 of the first file must be deleted (d=delete).
+(which appears right after) to match the two files.
+
+######################## ERROR OUTPUT CHECK ######################## #############
+ 
+Additionally, you can also redirect stderr to a file like this:
+
+./project2 M K S < a_in_X > my_out_X 2> my_err_X
+
+where my_err_X is the file to save the output you wrote to stderr.
+Note: this syntax assumes that the shell you are running is bash.
+Since it's the default, you won't have a problem.
+
+########################## AUDIT RECORD INFORMATION ###################### #############
+
+The tests we give you check the following cases:
+
+1: Add without realloc, without rehash, reg, isreg, list
+2. Add without realloc, without rehash, reg, unreg, clear, list
+3. Add with realloc, without rehash, reg, list, print
+4. Add with realloc, without rehash, reg, unreg, remove, clear, list, print
+5. Add without rehash, find-by-name
+6. Rehash once (up)
+7. Rehash once (down)
+8. Rehash several times
+9. Random operations
+10. The test11 of the previous work.
+
+######################### ADDITIONAL FILES ###################### ##########
+Additionally, for your measurements use the large files you had
+from the first task.
